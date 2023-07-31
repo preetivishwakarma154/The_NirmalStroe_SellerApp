@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nirmal_store/page-1/HomeScreen.dart';
+
 import 'package:nirmal_store/page-1/modal/constant.dart';
+
+import '../page-1/modal/Appbar.dart';
+import 'HomeScreen.dart';
 
 class EditProfileDetails extends StatefulWidget {
   const EditProfileDetails({super.key});
@@ -13,7 +16,7 @@ class _EditProfileDetailsState extends State<EditProfileDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: AppBarModal(),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(top: 10, left: 10, right: 10),

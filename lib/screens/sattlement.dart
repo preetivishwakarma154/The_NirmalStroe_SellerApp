@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../page-1/HomeScreen.dart';
+import '../page-1/modal/Appbar.dart';
 import '../page-1/modal/constant.dart';
+import 'HomeScreen.dart';
 
 class StepperDemo extends StatefulWidget {
   StepperDemo() : super();
@@ -101,7 +102,7 @@ class StepperDemoState extends State<StepperDemo> {
   Widget build(BuildContext context) {
     return Scaffold(
       // Appbar
-      appBar: buildAppBar(context),
+      appBar: AppBarModal(),
       // Body
       body: Theme(
         data: ThemeData(

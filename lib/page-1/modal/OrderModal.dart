@@ -1,23 +1,19 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:nirmal_store/screens/sattlement.dart';
-
 
 import '../../screens/Login.dart';
 import '../../screens/orderDetails.dart';
 import 'constant.dart';
 
 class OrderModal extends StatefulWidget {
-  const OrderModal(
-      {Key? key,
-      required this.id,
-      required this.productName,
-      required this.status,
-      required this.color})
-      : super(key: key);
-  final String id, productName, status;
-  final Color color;
+  const OrderModal({
+    Key? key,
+    required this.id,
+    required this.UserFirstName,
+    required this.status,
+    required this.UserLastName,
+  }) : super(key: key);
+  final String id, UserFirstName, UserLastName, status;
 
   @override
   State<OrderModal> createState() => _OrderModalState();
@@ -70,9 +66,16 @@ class _OrderModalState extends State<OrderModal> {
                 "Product Name",
                 style: headingtextStyle,
               ),
-              Text(
-                widget.productName,
-                style: productTextStyle,
+              Row(
+                children: [
+                  Text(widget.UserFirstName == null
+                      ? ' '
+                      : widget.UserFirstName),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(widget.UserLastName == null ? '' : widget.UserLastName)
+                ],
               ),
             ],
           ),
@@ -93,9 +96,9 @@ class _OrderModalState extends State<OrderModal> {
               Text(
                 widget.status,
                 style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: widget.color),
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
@@ -105,62 +108,64 @@ class _OrderModalState extends State<OrderModal> {
           IconButton(
             onPressed: () {
               showDialog(
-                
                 context: context,
-                builder: (context) =>
-
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20)
-                      ),
-                      width: 50,
-                      child: SimpleDialog(
-                        shape: RoundedRectangleBorder(
-
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                      
-                        
-                       insetPadding: EdgeInsets.only(left:0,right: 10,bottom: 5,),
-                        alignment: Alignment.centerRight,
-                 contentPadding: EdgeInsets.only(top:5,bottom: 5) ,
-
-
-
-                 children: <Widget>[
-
-                          SimpleDialogOption(
-                          onPressed: () {
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => StepperDemo(),));
-                          },
-                child:Text('View Order',style: productTextStyle,),
-              ),
-              SimpleDialogOption(
-              onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OrderDetails(),));
-
-              },
-              child:  Text('Update Order Status',style: productTextStyle),
-
-
-              ), SimpleDialogOption(
-              onPressed: () { },
-              child:  Text('Reject Order',style: productTextStyle),
-
-
-              ), SimpleDialogOption(
-              onPressed: () { },
-              child:  Text('Order Invoice',style: productTextStyle),
-
-
-              )],
-                ),
+                builder: (context) => Container(
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  width: 50,
+                  child: SimpleDialog(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    insetPadding: EdgeInsets.only(
+                      left: 0,
+                      right: 10,
+                      bottom: 5,
                     ),
+                    alignment: Alignment.centerRight,
+                    contentPadding: EdgeInsets.only(top: 5, bottom: 5),
+                    children: <Widget>[
+                      SimpleDialogOption(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => StepperDemo(),
+                              ));
+                        },
+                        child: Text(
+                          'View Order',
+                          style: productTextStyle,
+                        ),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OrderDetails(id: widget.id,),
+                              ));
+                        },
+                        child: Text('Update Order Status',
+                            style: productTextStyle),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: () {},
+                        child: Text('Reject Order', style: productTextStyle),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: () {},
+                        child: Text('Order Invoice', style: productTextStyle),
+                      )
+                    ],
+                  ),
+                ),
               );
             },
-            icon: Icon(Icons.arrow_circle_right_outlined,
+            icon: Icon(
+              Icons.arrow_circle_right_outlined,
               size: 25,
-              color: ThemeColorYellow,),
+              color: ThemeColorYellow,
+            ),
           ),
           // Row(
           //   children: <Widget>[

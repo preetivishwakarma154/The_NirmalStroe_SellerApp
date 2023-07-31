@@ -4,12 +4,17 @@ import 'constant.dart';
 
 
 class InputBox extends StatefulWidget {
- InputBox({Key? key, required this.controller, required this.hintText, this.prefixIconn,this.saffix, required this.textInputType
+
+
+ InputBox({Key? key, required this.controller, required this.hintText, this.prefixIconn,this.saffix, required this.textInputType,this.function,this.validator
  }) : super(key: key);
   final TextEditingController controller;
   final String hintText;
   var prefixIconn;
   var saffix;
+  var function;
+  var validator;
+
   final TextInputType textInputType;
   @override
   State<InputBox> createState() => _InputBoxState();
@@ -40,12 +45,14 @@ class _InputBoxState extends State<InputBox> {
           controller: widget.controller,
           keyboardType: widget.textInputType,
           focusNode: focusNode,
+          validator: widget.validator,
           decoration: InputDecoration(
               prefixIcon: Icon(
                 widget.prefixIconn,
                 color: focusNode.hasFocus ? ThemeColorYellow : ThemeColortext,
               ),
               hintText: widget.hintText,
+
               //suffix: widget.saffix,
               suffixIcon: widget.saffix,
               hintStyle: TextStyle(
@@ -57,7 +64,8 @@ class _InputBoxState extends State<InputBox> {
               border: OutlineInputBorder(
                   borderSide: BorderSide(color: ThemeColoricon)),
               focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: ThemeColorYellow))),
+                  borderSide: BorderSide(color: ThemeColorYellow))
+          ),
         ),
       ),
     );

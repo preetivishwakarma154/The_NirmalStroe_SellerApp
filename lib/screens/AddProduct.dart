@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../page-1/HomeScreen.dart';
+
+import '../page-1/modal/Appbar.dart';
 import '../page-1/modal/EditText.dart';
 import '../page-1/modal/buttonModal.dart';
 import '../page-1/modal/constant.dart';
+import 'HomeScreen.dart';
 import 'edit_details.dart';
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -62,7 +64,7 @@ class _AddProductState extends State<AddProduct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar( context),
+      appBar: AppBarModal(),
       body:  Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: SingleChildScrollView(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../page-1/HomeScreen.dart';
+
 import '../page-1/modal/constant.dart';
 
 class Refer_Earn extends StatefulWidget {

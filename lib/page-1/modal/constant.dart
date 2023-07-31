@@ -16,9 +16,14 @@ Color ThemeColorRed = Color(0xFFFF0000);
 Color ThemeColorImageText = Color(0xFF0066FF);
 Color ThemeColorbothomIcon = Color(0xFF8D99AD);
 
-
-TextStyle headingtextStyle =
-    TextStyle(color: ThemeColortext, fontSize: 14, );
+OutlineInputBorder diableBorder =
+    OutlineInputBorder(borderSide: BorderSide(color: ThemeColoricon));
+OutlineInputBorder enableborder =
+    OutlineInputBorder(borderSide: BorderSide(color: ThemeColorYellow));
+TextStyle headingtextStyle = TextStyle(
+  color: ThemeColortext,
+  fontSize: 14,
+);
 TextStyle productTextStyle =
     TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold);
 

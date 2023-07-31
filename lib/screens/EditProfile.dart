@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nirmal_store/screens/Registration.dart';
 
-import '../page-1/HomeScreen.dart';
+
 import '../page-1/modal/InputBox.dart';
 import '../page-1/modal/SimpleInputBox.dart';
 import '../page-1/modal/buttonModal.dart';

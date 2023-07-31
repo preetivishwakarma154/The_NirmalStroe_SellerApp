@@ -1,21 +1,66 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-import '../page-1/HomeScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart'as http;
+
+import '../page-1/modal/Appbar.dart';
 import '../page-1/modal/buttonModal.dart';
 import '../page-1/modal/constant.dart';
+import 'HomeScreen.dart';
 import 'edit_details.dart';
 class OrderDetails extends StatefulWidget {
-  const OrderDetails({Key? key}) : super(key: key);
+  const OrderDetails({Key? key, required this.id}) : super(key: key);
+  final String id;
 
   @override
   State<OrderDetails> createState() => _OrderDetailsState();
 }
 
+
 class _OrderDetailsState extends State<OrderDetails> {
+  Map OrderData= Map();
+  Future OrderDetail (order_id)async{
+    try{
+      var headers = {
+        'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTUsImlhdCI6MTY5MDM2ODY4MH0.t4uys2n7I0ChigJzEdd33AyNI39f2e9sJ3SZZMkqVIA',
+        'Cookie': 'ci_session=c70ea8088527b3f32b6c4b96c53e96e24eaac4ac'
+      };
+      var request = http.MultipartRequest('POST', Uri.parse('http://thenirmanstore.com/v1/seller/order_details'));
+      request.fields.addAll({
+        'order_id': order_id
+      });
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse response = await request.send();
+
+      var data = await response.stream.bytesToString();
+      OrderData = jsonDecode(data);
+      if (response.statusCode == 200) {
+        if(OrderData['status']==1){
+          print(OrderData);
+
+        }
+
+      }
+      else {
+        print(response.reasonPhrase);
+      }
+
+
+    }catch(e){
+
+    }
+  }
+  @override
+  void initState() {
+    OrderDetail(widget.id);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: AppBarModal(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -44,9 +89,9 @@ class _OrderDetailsState extends State<OrderDetails> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("ID", style: headingtextStyle),
+                              Text("Order ID", style: headingtextStyle),
                               Text(
-                                "1",
+                                OrderData['data']['id'],
                                 style: productTextStyle,
                               ),
                             ],

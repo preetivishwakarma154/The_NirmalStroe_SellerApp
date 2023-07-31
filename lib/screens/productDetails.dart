@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-
-import '../page-1/HomeScreen.dart';
+import '../page-1/modal/Appbar.dart';
 import '../page-1/modal/buttonModal.dart';
 import '../page-1/modal/constant.dart';
+import 'HomeScreen.dart';
 import 'edit_details.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -17,7 +17,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: AppBarModal(),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: SingleChildScrollView(

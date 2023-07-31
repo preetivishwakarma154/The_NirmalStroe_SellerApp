@@ -19,7 +19,7 @@ class ButtonModal extends StatelessWidget {
               minimumSize: Size.fromHeight(32),
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => function,));
+             // Navigator.push(context, MaterialPageRoute(builder: (context) => function,));
             },
             child: Text(
               buttonText,
