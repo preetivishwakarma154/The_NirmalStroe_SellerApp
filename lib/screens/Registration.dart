@@ -61,7 +61,7 @@ class _RegistrationState extends State<Registration> {
         'Cookie': 'ci_session=051d42079d07cf876dbc7c2f3aa3c7855647fc39'
       };
       var request = http.MultipartRequest(
-          'POST', Uri.parse('https://thenirmanstore.com/v1/seller/signup'));
+          'POST', Uri.parse('http://thenirmanstore.com/v1/seller/signup'));
       request.fields.addAll({
         'id_number': id_number,
         'mobile_no': mobile_no,

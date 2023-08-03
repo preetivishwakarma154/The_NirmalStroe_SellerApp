@@ -36,8 +36,8 @@ class _OrdersState extends State<Orders> {
       if (response.statusCode == 200) {
         if (OrderData['status'] == 1) {
           setState(() {
-            print(OrderData);
-            print(OrderData['data']);
+            //print(OrderData);
+          //  print(OrderData['data']);
           });
         }
       } else {

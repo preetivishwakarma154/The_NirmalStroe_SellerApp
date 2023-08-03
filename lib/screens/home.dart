@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
+import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nirmal_store/screens/SplashScreen.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 
@@ -14,8 +18,35 @@ class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
 }
+Map dashboard = Map() ;
+Future Deshboard () async{
+  try{
+    var headers = {
+      'x-access-token': '$globalusertoken',
+      'Cookie': 'ci_session=5609d5d1230d2f47a8d14ee5605f2b6c447c1d2f'
+    };
+    var request = http.MultipartRequest('GET', Uri.parse('http://thenirmanstore.com/v1/seller/dashboard'));
 
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+    var data = await response.stream.bytesToString();
+     dashboard = jsonDecode(data);
+    if (response.statusCode == 200) {
+      print(dashboard['data']['total_months_wise_sales'].length);
+
+    }
+    else {
+      print(response.reasonPhrase);
+    }
+
+
+  }catch(e){
+    print(e);
+  }
+}
 class _HomeState extends State<Home> {
+
 
 
   final List<ChartData> chartData = [
@@ -32,6 +63,11 @@ class _HomeState extends State<Home> {
     ChartData(17.00, 2300),
     ChartData(18.00, 4232),
   ];
+  @override
+  void initState() {
+  Deshboard();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

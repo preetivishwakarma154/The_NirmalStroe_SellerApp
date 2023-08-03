@@ -85,7 +85,7 @@ class _LoginState extends State<Login> {
     var headers = {
       'Cookie': 'ci_session=73d9e6e14320eeccd65fd5e134696e98cb5d0e71'
     };
-    var request = http.MultipartRequest('POST', Uri.parse('https://thenirmanstore.com/v1/seller/login'));
+    var request = http.MultipartRequest('POST', Uri.parse('http://thenirmanstore.com/v1/seller/login'));
     request.fields.addAll({
       'mobile_no': mobile_no,
       'otp': otp

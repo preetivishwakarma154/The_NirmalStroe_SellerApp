@@ -400,7 +400,7 @@ class _EditDetailsState extends State<EditDetails> {
               ),
               Container(
                   width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(top: 20, bottom: 20),
+                  margin: EdgeInsets.only(top: 15, bottom: 15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

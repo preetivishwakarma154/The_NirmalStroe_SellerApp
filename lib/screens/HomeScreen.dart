@@ -9,7 +9,7 @@ import '../page-1/modal/constant.dart';
 import '../page-1/modal/dropdownbutton.dart';
 import '../screens/Login.dart';
 import '../screens/Orders.dart';
-import '../screens/EditProfile.dart';
+import '../screens/AddProfile.dart';
 import '../screens/Profile.dart';
 import '../screens/home.dart';
 import '../screens/products.dart';

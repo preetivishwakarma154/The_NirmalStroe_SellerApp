@@ -15,6 +15,7 @@ Color ThemeColorOrange = Color(0xFFFF8A00);
 Color ThemeColorRed = Color(0xFFFF0000);
 Color ThemeColorImageText = Color(0xFF0066FF);
 Color ThemeColorbothomIcon = Color(0xFF8D99AD);
+Color ThemeColorbackground = Color(0xFFE9E9E9);
 
 OutlineInputBorder diableBorder =
     OutlineInputBorder(borderSide: BorderSide(color: ThemeColoricon));

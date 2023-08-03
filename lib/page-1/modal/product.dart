@@ -4,9 +4,9 @@ import '../../screens/productDetails.dart';
 import 'constant.dart';
 class product extends StatelessWidget {
   const product({
-    super.key, required this.id, required this.productName, required this.mrp,
+    super.key, required this.id, required this.productName, required this.mrp, required this.productid,
   });
-  final String id, productName, mrp;
+  final String productid,id, productName, mrp;
 
   @override
   Widget build(BuildContext context) {
@@ -33,47 +33,58 @@ class product extends StatelessWidget {
                   style: headingtextStyle
               ),
 
-              Text(id,style: productTextStyle,),
+              Text(productid,style: productTextStyle,),
             ],
           ),
           VerticalDivider(
             color: ThemeColorDivider,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Product Name",
-                style: headingtextStyle,
-              ),
+          Expanded(
+            flex: 2,
+            child: 
+            
+            SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Product Name",
+                    style: headingtextStyle,
+                  ),
+                  SizedBox(height: 5,),
 
-              Text(productName,style: productTextStyle,),
-            ],
+                  Text(productName,style: productTextStyle,),
+                ],
+              ),
+            ),
           ),
           VerticalDivider(
             color: ThemeColorDivider,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                "MRP",
-                style: headingtextStyle,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text("Rs. "+mrp,style: productTextStyle,),
-            ],
+          Expanded(
+            flex: 1,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  "MRP",
+                  style: headingtextStyle,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text("Rs. "+mrp,style: productTextStyle,),
+              ],
+            ),
           ),
           VerticalDivider(
             color: ThemeColorDivider,
           ),
           IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(),));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(id: id,),));
               },
               icon: Icon(
                 Icons.arrow_circle_right_outlined,
