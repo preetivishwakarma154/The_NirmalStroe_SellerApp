@@ -32,14 +32,16 @@ class _ProfileState extends State<Profile> {
 
       http.StreamedResponse response = await request.send();
       var data = await response.stream.bytesToString();
-      setState(() {
-        getProfileData = jsonDecode(data);
-      });
 
       if (response.statusCode == 200) {
+        setState(() {
+          getProfileData = jsonDecode(data);
+        });
         if (getProfileData['status'] == 1) {
-          print(getProfileData['data']['profile_pic']==null?'sdfds':'kdjfnkjd');
-        } else {}
+          print(getProfileData);
+          print(getProfileData['data']['profile_pic']);
+
+        }
       } else {
         print(response.reasonPhrase);
       }
@@ -99,16 +101,7 @@ class _ProfileState extends State<Profile> {
                                   AssetImage('assets/page-1/images/person.png'),
                             )),
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Change Profile Photo',
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: ThemeColorImageText,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
+
                       ListTile(
                         visualDensity:
                             VisualDensity(horizontal: 0, vertical: -2),

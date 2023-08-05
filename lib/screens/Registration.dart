@@ -300,7 +300,7 @@ class _RegistrationState extends State<Registration> {
         'Cookie': 'ci_session=23fdf7723748242a247650083cd62dee4f8af07d'
       };
       var request = http.MultipartRequest(
-          'POST', Uri.parse('https://thenirmanstore.com/v1/seller/send_otp'));
+          'POST', Uri.parse('http://thenirmanstore.com/v1/seller/send_otp'));
       request.fields.addAll({'type': '$type', 'mobile_no': mobile_no});
 
       request.headers.addAll(headers);
@@ -337,7 +337,7 @@ class _RegistrationState extends State<Registration> {
         'Cookie': 'ci_session=23fdf7723748242a247650083cd62dee4f8af07d'
       };
       var request = http.MultipartRequest(
-          'POST', Uri.parse('https://thenirmanstore.com/v1/seller/send_otp'));
+          'POST', Uri.parse('http://thenirmanstore.com/v1/seller/send_otp'));
       request.fields.addAll({'type': '$type', 'email_id': email});
 
       request.headers.addAll(headers);
